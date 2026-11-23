@@ -19,7 +19,6 @@ import { Route as PrayerTimesRouteImport } from './routes/prayer-times'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as QiblaRouteImport } from './routes/qibla'
 import { Route as SearchRouteImport } from './routes/search'
-import { Route as TafsirRouteImport } from './routes/tafsir'
 import { Route as TasbeehRouteImport } from './routes/tasbeeh'
 import { Route as AdhkarIndexRouteImport } from './routes/adhkar/index'
 import { Route as AdhkarCategoryRouteImport } from './routes/adhkar/$category'
@@ -33,6 +32,8 @@ import { Route as QuranTajweedNumberRouteImport } from './routes/quran-tajweed/$
 import { Route as QuranWrittenIndexRouteImport } from './routes/quran-written/index'
 import { Route as QuranWrittenNumberRouteImport } from './routes/quran-written/$number'
 import { Route as SurahNumberRouteImport } from './routes/surah/$number'
+import { Route as TafsirIndexRouteImport } from './routes/tafsir/index'
+import { Route as TafsirNumberRouteImport } from './routes/tafsir/$number'
 import { Route as ApiPublicIlluminatedBookRouteImport } from './routes/api/public/illuminated-book'
 
 const IndexRoute = IndexRouteImport.update({
@@ -83,11 +84,6 @@ const QiblaRoute = QiblaRouteImport.update({
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TafsirRoute = TafsirRouteImport.update({
-  id: '/tafsir',
-  path: '/tafsir',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TasbeehRoute = TasbeehRouteImport.update({
@@ -155,6 +151,16 @@ const SurahNumberRoute = SurahNumberRouteImport.update({
   path: '/surah/$number',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TafsirIndexRoute = TafsirIndexRouteImport.update({
+  id: '/tafsir/',
+  path: '/tafsir/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TafsirNumberRoute = TafsirNumberRouteImport.update({
+  id: '/tafsir/$number',
+  path: '/tafsir/$number',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicIlluminatedBookRoute =
   ApiPublicIlluminatedBookRouteImport.update({
     id: '/api/public/illuminated-book',
@@ -173,7 +179,6 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/qibla': typeof QiblaRoute
   '/search': typeof SearchRoute
-  '/tafsir': typeof TafsirRoute
   '/tasbeeh': typeof TasbeehRoute
   '/adhkar/$category': typeof AdhkarCategoryRoute
   '/hadith/$book': typeof HadithBookRoute
@@ -182,11 +187,13 @@ export interface FileRoutesByFullPath {
   '/quran-tajweed/$number': typeof QuranTajweedNumberRoute
   '/quran-written/$number': typeof QuranWrittenNumberRoute
   '/surah/$number': typeof SurahNumberRoute
+  '/tafsir/$number': typeof TafsirNumberRoute
   '/adhkar/': typeof AdhkarIndexRoute
   '/hadith/': typeof HadithIndexRoute
   '/quran-audio/': typeof QuranAudioIndexRoute
   '/quran-tajweed/': typeof QuranTajweedIndexRoute
   '/quran-written/': typeof QuranWrittenIndexRoute
+  '/tafsir/': typeof TafsirIndexRoute
   '/api/public/illuminated-book': typeof ApiPublicIlluminatedBookRoute
 }
 export interface FileRoutesByTo {
@@ -200,7 +207,6 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/qibla': typeof QiblaRoute
   '/search': typeof SearchRoute
-  '/tafsir': typeof TafsirRoute
   '/tasbeeh': typeof TasbeehRoute
   '/adhkar/$category': typeof AdhkarCategoryRoute
   '/hadith/$book': typeof HadithBookRoute
@@ -209,11 +215,13 @@ export interface FileRoutesByTo {
   '/quran-tajweed/$number': typeof QuranTajweedNumberRoute
   '/quran-written/$number': typeof QuranWrittenNumberRoute
   '/surah/$number': typeof SurahNumberRoute
+  '/tafsir/$number': typeof TafsirNumberRoute
   '/adhkar': typeof AdhkarIndexRoute
   '/hadith': typeof HadithIndexRoute
   '/quran-audio': typeof QuranAudioIndexRoute
   '/quran-tajweed': typeof QuranTajweedIndexRoute
   '/quran-written': typeof QuranWrittenIndexRoute
+  '/tafsir': typeof TafsirIndexRoute
   '/api/public/illuminated-book': typeof ApiPublicIlluminatedBookRoute
 }
 export interface FileRoutesById {
@@ -228,7 +236,6 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/qibla': typeof QiblaRoute
   '/search': typeof SearchRoute
-  '/tafsir': typeof TafsirRoute
   '/tasbeeh': typeof TasbeehRoute
   '/adhkar/$category': typeof AdhkarCategoryRoute
   '/hadith/$book': typeof HadithBookRoute
@@ -237,11 +244,13 @@ export interface FileRoutesById {
   '/quran-tajweed/$number': typeof QuranTajweedNumberRoute
   '/quran-written/$number': typeof QuranWrittenNumberRoute
   '/surah/$number': typeof SurahNumberRoute
+  '/tafsir/$number': typeof TafsirNumberRoute
   '/adhkar/': typeof AdhkarIndexRoute
   '/hadith/': typeof HadithIndexRoute
   '/quran-audio/': typeof QuranAudioIndexRoute
   '/quran-tajweed/': typeof QuranTajweedIndexRoute
   '/quran-written/': typeof QuranWrittenIndexRoute
+  '/tafsir/': typeof TafsirIndexRoute
   '/api/public/illuminated-book': typeof ApiPublicIlluminatedBookRoute
 }
 export interface FileRouteTypes {
@@ -257,7 +266,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qibla'
     | '/search'
-    | '/tafsir'
     | '/tasbeeh'
     | '/adhkar/$category'
     | '/hadith/$book'
@@ -266,11 +274,13 @@ export interface FileRouteTypes {
     | '/quran-tajweed/$number'
     | '/quran-written/$number'
     | '/surah/$number'
+    | '/tafsir/$number'
     | '/adhkar/'
     | '/hadith/'
     | '/quran-audio/'
     | '/quran-tajweed/'
     | '/quran-written/'
+    | '/tafsir/'
     | '/api/public/illuminated-book'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -284,7 +294,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qibla'
     | '/search'
-    | '/tafsir'
     | '/tasbeeh'
     | '/adhkar/$category'
     | '/hadith/$book'
@@ -293,11 +302,13 @@ export interface FileRouteTypes {
     | '/quran-tajweed/$number'
     | '/quran-written/$number'
     | '/surah/$number'
+    | '/tafsir/$number'
     | '/adhkar'
     | '/hadith'
     | '/quran-audio'
     | '/quran-tajweed'
     | '/quran-written'
+    | '/tafsir'
     | '/api/public/illuminated-book'
   id:
     | '__root__'
@@ -311,7 +322,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qibla'
     | '/search'
-    | '/tafsir'
     | '/tasbeeh'
     | '/adhkar/$category'
     | '/hadith/$book'
@@ -320,11 +330,13 @@ export interface FileRouteTypes {
     | '/quran-tajweed/$number'
     | '/quran-written/$number'
     | '/surah/$number'
+    | '/tafsir/$number'
     | '/adhkar/'
     | '/hadith/'
     | '/quran-audio/'
     | '/quran-tajweed/'
     | '/quran-written/'
+    | '/tafsir/'
     | '/api/public/illuminated-book'
   fileRoutesById: FileRoutesById
 }
@@ -339,7 +351,6 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   QiblaRoute: typeof QiblaRoute
   SearchRoute: typeof SearchRoute
-  TafsirRoute: typeof TafsirRoute
   TasbeehRoute: typeof TasbeehRoute
   AdhkarCategoryRoute: typeof AdhkarCategoryRoute
   HadithBookRoute: typeof HadithBookRoute
@@ -348,11 +359,13 @@ export interface RootRouteChildren {
   QuranTajweedNumberRoute: typeof QuranTajweedNumberRoute
   QuranWrittenNumberRoute: typeof QuranWrittenNumberRoute
   SurahNumberRoute: typeof SurahNumberRoute
+  TafsirNumberRoute: typeof TafsirNumberRoute
   AdhkarIndexRoute: typeof AdhkarIndexRoute
   HadithIndexRoute: typeof HadithIndexRoute
   QuranAudioIndexRoute: typeof QuranAudioIndexRoute
   QuranTajweedIndexRoute: typeof QuranTajweedIndexRoute
   QuranWrittenIndexRoute: typeof QuranWrittenIndexRoute
+  TafsirIndexRoute: typeof TafsirIndexRoute
   ApiPublicIlluminatedBookRoute: typeof ApiPublicIlluminatedBookRoute
 }
 
@@ -426,13 +439,6 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tafsir': {
-      id: '/tafsir'
-      path: '/tafsir'
-      fullPath: '/tafsir'
-      preLoaderRoute: typeof TafsirRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tasbeeh': {
@@ -526,6 +532,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SurahNumberRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tafsir/': {
+      id: '/tafsir/'
+      path: '/tafsir'
+      fullPath: '/tafsir/'
+      preLoaderRoute: typeof TafsirIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tafsir/$number': {
+      id: '/tafsir/$number'
+      path: '/tafsir/$number'
+      fullPath: '/tafsir/$number'
+      preLoaderRoute: typeof TafsirNumberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/illuminated-book': {
       id: '/api/public/illuminated-book'
       path: '/api/public/illuminated-book'
@@ -547,7 +567,6 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   QiblaRoute: QiblaRoute,
   SearchRoute: SearchRoute,
-  TafsirRoute: TafsirRoute,
   TasbeehRoute: TasbeehRoute,
   AdhkarCategoryRoute: AdhkarCategoryRoute,
   HadithBookRoute: HadithBookRoute,
@@ -556,11 +575,13 @@ const rootRouteChildren: RootRouteChildren = {
   QuranTajweedNumberRoute: QuranTajweedNumberRoute,
   QuranWrittenNumberRoute: QuranWrittenNumberRoute,
   SurahNumberRoute: SurahNumberRoute,
+  TafsirNumberRoute: TafsirNumberRoute,
   AdhkarIndexRoute: AdhkarIndexRoute,
   HadithIndexRoute: HadithIndexRoute,
   QuranAudioIndexRoute: QuranAudioIndexRoute,
   QuranTajweedIndexRoute: QuranTajweedIndexRoute,
   QuranWrittenIndexRoute: QuranWrittenIndexRoute,
+  TafsirIndexRoute: TafsirIndexRoute,
   ApiPublicIlluminatedBookRoute: ApiPublicIlluminatedBookRoute,
 }
 export const routeTree = rootRouteImport
