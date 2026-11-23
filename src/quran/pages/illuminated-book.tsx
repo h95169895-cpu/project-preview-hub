@@ -178,14 +178,14 @@ export default function IlluminatedBook() {
               <div className="flex flex-wrap gap-2">
                 {AD_PACKAGES.map((pkg) => (
                   <Button
-                    key={pkg}
+                    key={pkg.ads}
                     type="button"
                     size="sm"
                     variant="outline"
                     disabled={adBusy || busy}
-                    onClick={() => watchAds(pkg)}
+                    onClick={() => watchAds(pkg.ads)}
                   >
-                    مشاهدة {pkg} إعلان (+{rewardFor(pkg)} كريدت)
+                    مشاهدة {pkg.ads} إعلان (+{pkg.credits} كريدت)
                   </Button>
                 ))}
               </div>
