@@ -15,7 +15,7 @@ const sections: { title: string; body: string[] }[] = [
 ];
 
 // رابط سياسة الخصوصية المنشور على الويب (نفس الصفحة على موقع التطبيق المباشر)
-const PRIVACY_WEB_URL = "https://github-project-peek.lovable.app/privacy";
+const PRIVACY_WEB_URL = "https://github-project-peek.lovable.app/privacy-policy.html";
 
 export default function Privacy() {
   return (
