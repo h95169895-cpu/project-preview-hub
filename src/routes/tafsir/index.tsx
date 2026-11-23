@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Tafsir from "@/quran/pages/tafsir";
 
-export const Route = createFileRoute("/tafsir")({
+export const Route = createFileRoute("/tafsir/")({
   head: () => ({
     meta: [
       { title: "التفسير | تقوى القلوب | محمد صديق المنشاوي | تطبيق متكامل" },
