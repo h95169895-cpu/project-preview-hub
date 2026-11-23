@@ -113,11 +113,13 @@
   /* Arch-shaped bar: cream band with a raised gold circle in the middle,
      sized to sit between the plant and the lantern of the home artwork. */
   --nav-width: min(50vw, 190px);
-  --nav-arch-top: hsl(44 60% 97% / 0.97);
-  --nav-arch-bottom: hsl(42 42% 90% / 0.97);
-  --nav-arch-edge: hsl(40 45% 72% / 0.85);
+  --nav-arch-top: hsl(210 6% 46% / 0.5);
+  --nav-arch-bottom: hsl(210 6% 30% / 0.6);
+  --nav-arch-edge: hsl(210 6% 18% / 0.3);
+  --nav-olive: hsl(86 28% 30%);
+  --nav-olive-soft: hsl(86 28% 30% / 0.55);
   --nav-home: hsl(152 52% 24%);
-  --nav-book: hsl(34 45% 55%);
+  --nav-book: hsl(32 52% 42%);
   --nav-bell: hsl(14 52% 52%);
   --nav-search: hsl(78 22% 38%);
   --nav-gold-light: hsl(45 75% 86%);
@@ -203,7 +205,14 @@
 .bottom-navigation-item--book { color: var(--nav-book); }
 .bottom-navigation-item--bell { color: var(--nav-bell); }
 .bottom-navigation-item--search { color: var(--nav-search); }
-/* Small gold dot under the page you are on. */
+/* The page you are on: white icon sitting inside an olive halo. */
+.bottom-navigation .bottom-navigation-item--active {
+  background-color: var(--nav-olive);
+  border-radius: 32%;
+  color: #fff;
+}
+.bottom-navigation-item--active .bottom-navigation-door { fill: var(--nav-olive); }
+/* Small olive dot under the page you are on. */
 .bottom-navigation .bottom-navigation-item--active:not(.bottom-navigation-item--center)::after {
   content: "";
   position: absolute;
@@ -212,7 +221,7 @@
   width: 14%;
   aspect-ratio: 1;
   border-radius: 999px;
-  background: var(--nav-gold-deep);
+  background: var(--nav-olive);
   transform: translateX(-50%);
   animation: nav-dot-in 360ms var(--nav-spring) both;
 }
@@ -237,6 +246,21 @@
 @keyframes nav-halo {
   0% { box-shadow: 0 0 0 0 hsl(44 75% 70% / 0.55); }
   70%, 100% { box-shadow: 0 0 0 9px hsl(44 75% 70% / 0); }
+}
+/* Centre button on its own page: same olive halo, white icon. */
+.bottom-navigation .bottom-navigation-item--center.bottom-navigation-item--active {
+  background: var(--nav-olive);
+  border-color: hsl(0 0% 100% / 0.4);
+  box-shadow: 0 4px 10px hsl(86 28% 18% / 0.4), inset 0 2px 4px hsl(0 0% 100% / 0.22), inset 0 -3px 6px hsl(86 28% 14% / 0.3);
+  color: #fff;
+}
+.bottom-navigation .bottom-navigation-item--center.bottom-navigation-item--active::after {
+  box-shadow: 0 0 0 0 var(--nav-olive-soft);
+  animation-name: nav-halo-olive;
+}
+@keyframes nav-halo-olive {
+  0% { box-shadow: 0 0 0 0 var(--nav-olive-soft); }
+  70%, 100% { box-shadow: 0 0 0 9px hsl(86 28% 30% / 0); }
 }
 .bottom-navigation .bottom-navigation-item--center .bottom-navigation-icon { width: 56%; height: 56%; }
 .bottom-navigation .bottom-navigation-item--center .bottom-navigation-icon svg { stroke-width: 2.4; }
