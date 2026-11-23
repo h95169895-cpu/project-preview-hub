@@ -1,6 +1,6 @@
 import { Link } from "@/quran/wouter-shim";
 import illuminatedBookAsset from "@/assets/home-buttons/illuminated-book-button.jpg.asset.json";
-import minshawiHeaderAsset from "@/assets/minshawi-header-soft.jpg";
+import minshawiHeaderAsset from "@/assets/minshawi-header-clear.webp.asset.json";
 
 const homeBackground = `${import.meta.env.BASE_URL}quran-home-soft.jpg`;
 const buttonAsset = (name: string) =>
@@ -79,7 +79,7 @@ export default function Home() {
       <div className="quran-home-art">
         <img
           className="quran-home-header"
-          src={minshawiHeaderAsset}
+          src={minshawiHeaderAsset.url}
           alt="فضيلة الشيخ محمد صديق المنشاوي"
           draggable={false}
         />
