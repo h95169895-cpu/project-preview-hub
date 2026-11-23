@@ -14,6 +14,9 @@ const sections: { title: string; body: string[] }[] = [
   { title: "التواصل", body: ["لأي استفسار عن الخصوصية، راسلنا على البريد: hamza152524@gmail.com"] },
 ];
 
+// رابط سياسة الخصوصية المنشور على الويب (نفس الصفحة على موقع التطبيق المباشر)
+const PRIVACY_WEB_URL = "https://github-project-peek.lovable.app/privacy";
+
 export default function Privacy() {
   return (
     <div className="mx-auto max-w-xl space-y-4 py-4" dir="rtl">
@@ -34,7 +37,7 @@ export default function Privacy() {
 
       <div className="pt-2 text-center">
         <a
-          href="https://hugeh1102-del.github.io/repo-preview-playground/privacy-policy.html"
+          href={PRIVACY_WEB_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary underline"
