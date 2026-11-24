@@ -1,6 +1,6 @@
 import { Link } from "@/quran/wouter-shim";
 import illuminatedBookAsset from "@/assets/home-buttons/illuminated-book-button.jpg.asset.json";
-import minshawiHeaderAsset from "@/assets/minshawi-header-clear.webp.asset.json";
+import minshawiHeaderUrl from "@/assets/minshawi-header-clear.webp";
 
 const homeBackground = `${import.meta.env.BASE_URL}quran-home-soft.jpg`;
 const buttonAsset = (name: string) =>
