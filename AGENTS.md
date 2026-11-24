@@ -31,6 +31,7 @@ use the editor.
 
 ## App structure
 
+- Use a light Android activity theme and disable WebView automatic darkening with API guards so native rendering preserves the web artwork's colors.
 - Keep the imported Quran app and its feature modules under `src/quran/` and `src/routes/`, while preserving the host's `src/start.ts`, `src/router.tsx`, `src/server.ts`, and pinned TanStack versions so the existing preview runtime remains intact.
 - Keep Android launcher icon and splash assets synchronized with the supplied brand artwork across all density variants, so the installed app matches the web startup experience.
 - Android builds (`CAPACITOR_BUILD=1`, via `cap:sync`) switch TanStack Start to SPA mode with a prerendered `index.html`, because the APK loads files offline and has no server; web builds stay server-rendered.

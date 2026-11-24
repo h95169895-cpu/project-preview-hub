@@ -3,6 +3,7 @@ package app.lovable.quranreader;
 import com.getcapacitor.BridgeActivity;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.Handler;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 /**
  * Shows the same startup artwork as the web app (portrait art with its own dot ring spinning)
@@ -31,6 +34,7 @@ public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preserveWebColors();
         startedAt = System.currentTimeMillis();
 
         startupOverlay = new FrameLayout(this);
@@ -81,6 +85,22 @@ public class MainActivity extends BridgeActivity {
 
         addContentView(startupOverlay, new ViewGroup.LayoutParams(-1, -1));
         startupHandler.post(checkStartupReady);
+    }
+
+    /** Keep the bundled artwork unchanged by Android/WebView automatic darkening. */
+    @SuppressWarnings("deprecation")
+    private void preserveWebColors() {
+        if (getBridge() == null || getBridge().getWebView() == null) return;
+        WebView webView = getBridge().getWebView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            webView.setForceDarkAllowed(false);
+            WebSettings settings = webView.getSettings();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                settings.setAlgorithmicDarkeningAllowed(false);
+            } else {
+                settings.setForceDark(WebSettings.FORCE_DARK_OFF);
+            }
+        }
     }
 
     private void hideStartup() {
