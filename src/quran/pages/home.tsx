@@ -79,7 +79,7 @@ export default function Home() {
       <div className="quran-home-art">
         <img
           className="quran-home-header"
-          src={minshawiHeaderAsset.url}
+          src={minshawiHeaderUrl}
           alt="فضيلة الشيخ محمد صديق المنشاوي"
           draggable={false}
         />
