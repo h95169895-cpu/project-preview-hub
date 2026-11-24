@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@/quran/wouter-shim";
 import { ChevronRight, RotateCcw, Heart } from "lucide-react";
 import { FavoriteButton } from "@/quran/components/FavoriteButton";
+import { Button } from "@/quran/components/ui/button";
 
 const tasbeehList = [
   { id: 1,  text: "سُبْحَانَ اللَّهِ",                                         target: 33,  note: "بعد الصلاة" },
@@ -90,11 +91,10 @@ function TasbeehCounter({ item, count, onIncrement, onReset, onClose }:
           </div>
         ) : (
           <div className="space-y-3">
-            <button onClick={onIncrement}
+            <Button onClick={onIncrement}
+              aria-label={`زيادة عداد ${item.text}`}
               className="w-40 h-40 rounded-full bg-primary text-primary-foreground shadow-xl hover:bg-primary/90 transition-all active:scale-95 mx-auto flex items-center justify-center"
-              data-testid="button-increment-tasbeeh">
-              <span className="font-serif text-xl leading-relaxed px-4 text-center">{item.text}</span>
-            </button>
+              data-testid="button-increment-tasbeeh" />
             <button onClick={onReset} className="text-muted-foreground hover:text-primary text-xs font-sans flex items-center gap-1 mx-auto" data-testid="button-reset-tasbeeh">
               <RotateCcw className="w-3 h-3" /> إعادة
             </button>
