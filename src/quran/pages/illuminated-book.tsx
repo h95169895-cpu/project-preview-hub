@@ -47,7 +47,6 @@ export default function IlluminatedBook() {
     event.preventDefault();
     if (busy || question.trim().length < 3) return;
     if (!canAsk(credits)) { setError("رصيدك لا يكفي. شاهد إعلانات لتحصل على رصيد جديد."); return; }
-    if (!navigator.onLine) { setError("الكتاب المضيئ يحتاج اتصالًا بالإنترنت."); return; }
     setError(""); setBusy(true); setSubmitted(question.trim());
     const v = videoRef.current;
     if (v) {
